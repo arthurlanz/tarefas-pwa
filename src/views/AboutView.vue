@@ -2,53 +2,68 @@
   <div class="about">
     <h2>Sobre o aplicativo</h2>
     <p>
-      Este é um gerenciador de tarefas desenvolvido como Progressive Web App
-      (PWA) utilizando Vue.js 3 e Vite.
+      O Registro de Atividades é um gerenciador de tarefas desenvolvido como
+      Progressive Web App usando Vue.js 3 e Vite.
     </p>
     <p>
-      O aplicativo funciona offline, pode ser instalado no seu dispositivo e
-      carrega rapidamente mesmo em conexões lentas.
+      Nele é possível adicionar, editar, concluir e remover tarefas. O aplicativo
+      também pode ser instalado e possui suporte para funcionamento offline.
     </p>
+
+    <h3>Recursos</h3>
+    <ul>
+      <li>Cadastro e edição de tarefas</li>
+      <li>Envio de imagens</li>
+      <li>Funcionamento offline</li>
+      <li>Instalação no dispositivo</li>
+      <li>Notificações</li>
+    </ul>
 
     <h3>Tecnologias utilizadas</h3>
     <ul>
-      <li>Vue.js 3 com Composition API</li>
-      <li>Vite como ferramenta de build</li>
-      <li>Vue Router para navegação</li>
-      <li>vite-plugin-pwa para suporte a PWA</li>
-      <li>Workbox para gerenciamento de cache</li>
+      <li>Vue.js 3</li>
+      <li>Vite</li>
+      <li>Vue Router</li>
+      <li>Workbox</li>
+      <li>vite-plugin-pwa</li>
     </ul>
   </div>
 </template>
 
 <style scoped>
 .about {
-  line-height: 1.6;
+  padding: 22px;
+  background: white;
+  border: 1px solid #d6d6d6;
+  border-radius: 7px;
+  line-height: 1.55;
 }
 
 .about h2 {
-  font-size: 1.3rem;
-  color: #4a90d9;
-  margin-bottom: 12px;
+  margin: 0 0 12px;
+  color: #2563eb;
+  font-size: 1.35rem;
 }
 
 .about h3 {
-  font-size: 1.1rem;
-  margin-top: 20px;
-  margin-bottom: 8px;
+  margin: 20px 0 8px;
+  font-size: 1rem;
 }
 
 .about p {
-  margin-bottom: 12px;
+  margin: 0 0 10px;
   color: #555;
+  font-size: 0.9rem;
 }
 
 .about ul {
+  margin: 0;
   padding-left: 20px;
 }
 
 .about li {
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   color: #555;
+  font-size: 0.88rem;
 }
 </style>

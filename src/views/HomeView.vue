@@ -1,5 +1,10 @@
 <template>
-  <div>
+  <div class="home-view">
+    <header class="page-heading">
+      <h2>Minhas tarefas</h2>
+      <p>Adicione e acompanhe suas atividades.</p>
+    </header>
+
     <p v-if="store.error" class="error-message">{{ store.error }}</p>
 
     <TaskForm
@@ -12,8 +17,8 @@
     <p v-if="store.loading" class="loading-message">Carregando tarefas...</p>
 
     <template v-else>
-      <section v-if="store.pendingTasks.length > 0">
-        <h2 class="section-title">Pendentes ({{ store.pendingTasks.length }})</h2>
+      <section v-if="store.pendingTasks.length > 0" class="task-group">
+        <h3 class="section-title">Pendentes ({{ store.pendingTasks.length }})</h3>
         <TaskItem
           v-for="task in store.pendingTasks"
           :key="task.id"
@@ -24,8 +29,8 @@
         />
       </section>
 
-      <section v-if="store.completedTasks.length > 0">
-        <h2 class="section-title">Concluídas ({{ store.completedTasks.length }})</h2>
+      <section v-if="store.completedTasks.length > 0" class="task-group">
+        <h3 class="section-title">Concluídas ({{ store.completedTasks.length }})</h3>
         <TaskItem
           v-for="task in store.completedTasks"
           :key="task.id"
@@ -37,7 +42,7 @@
       </section>
 
       <p v-if="store.tasks.length === 0" class="empty-message">
-        Nenhuma tarefa cadastrada. Adicione uma acima.
+        Nenhuma atividade cadastrada. Use o formulário acima para adicionar uma tarefa.
       </p>
     </template>
 
@@ -87,35 +92,54 @@ function handleRemove(id) {
 </script>
 
 <style scoped>
-.section-title {
-  font-size: 1rem;
-  color: #a94468;
-  margin-bottom: 12px;
-  margin-top: 20px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid #f0ccd6;
+.home-view {
+  padding-bottom: 30px;
 }
 
-.empty-message {
-  text-align: center;
-  color: #9a7580;
-  margin-top: 40px;
+.page-heading {
+  margin-bottom: 18px;
+}
+
+.page-heading h2 {
+  margin: 0 0 5px;
+  font-size: 1.4rem;
+}
+
+.page-heading p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.task-group {
+  margin-top: 22px;
+}
+
+.section-title {
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  color: #333;
+  border-bottom: 2px solid #2563eb;
   font-size: 0.95rem;
 }
 
-.error-message {
-  color: #b4234d;
-  background-color: #fff0f4;
-  border: 1px solid #efb6c7;
+.empty-message,
+.loading-message {
+  padding: 18px;
+  color: #666;
+  background: white;
+  border: 1px solid #d6d6d6;
   border-radius: 6px;
-  padding: 10px 14px;
-  margin-bottom: 12px;
-  font-size: 0.9rem;
+  text-align: center;
+  font-size: 0.88rem;
 }
 
-.loading-message {
-  color: #8b6672;
-  font-size: 0.9rem;
-  padding: 8px 0;
+.error-message {
+  padding: 9px 11px;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 5px;
+  font-size: 0.85rem;
 }
 </style>

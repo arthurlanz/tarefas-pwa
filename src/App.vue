@@ -1,9 +1,11 @@
 <template>
   <OfflineBanner />
-  <AppHeader />
-  <main>
-    <router-view />
-  </main>
+  <div class="app-shell">
+    <AppHeader />
+    <main class="app-content">
+      <router-view />
+    </main>
+  </div>
   <NotificationPrompt />
 </template>
 

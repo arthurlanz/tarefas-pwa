@@ -2,7 +2,6 @@
   <Transition name="slide-up">
     <div v-if="visible" class="notification-prompt">
       <div class="prompt-content">
-        <span class="prompt-icon">🔔</span>
         <div class="prompt-text">
           <strong>Ativar notificações?</strong>
           <p>
@@ -57,63 +56,76 @@ function dismiss() {
 <style scoped>
 .notification-prompt {
   position: fixed;
-  bottom: 1.5rem;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   width: min(480px, calc(100vw - 2rem));
   background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  padding: 1rem 1.25rem;
+  border: 1px solid #d6d6d6;
+  border-radius: 7px;
+  padding: 1rem;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
+
 .prompt-content {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
 }
-.prompt-icon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
+
 .prompt-text strong {
   display: block;
-  font-size: 0.95rem;
-  color: #1a202c;
+  color: #222;
+  font-size: 0.9rem;
 }
+
 .prompt-text p {
-  margin: 0.2rem 0 0;
-  font-size: 0.85rem;
-  color: #718096;
+  margin: 0.25rem 0 0;
+  color: #666;
+  font-size: 0.8rem;
   line-height: 1.4;
 }
+
 .prompt-actions {
   display: flex;
   gap: 0.5rem;
   justify-content: flex-end;
 }
+
 .btn-allow {
-  padding: 0.4rem 1rem;
-  background: #4a90d9;
+  padding: 0.5rem 1rem;
   color: #fff;
+  background: #2563eb;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
+
+.btn-allow:hover {
+  background: #1d4ed8;
+}
+
 .btn-dismiss {
-  padding: 0.4rem 1rem;
+  padding: 0.5rem 1rem;
   background: transparent;
-  color: #718096;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
+  color: #555;
+  border: 1px solid #c7c7c7;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
+
+.btn-dismiss:hover {
+  color: #222;
+  background: #f3f4f6;
+}
+
 /* Animação slide-up */
 .slide-up-enter-active,
 .slide-up-leave-active {

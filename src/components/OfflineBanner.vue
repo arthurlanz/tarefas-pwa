@@ -1,6 +1,6 @@
 <template>
   <div v-if="!isOnline" class="offline-banner">
-    Você está offline. Algumas funcionalidades podem estar indisponíveis.
+    Sem conexão. Algumas funções ficarão indisponíveis temporariamente.
   </div>
 </template>
 
@@ -24,15 +24,19 @@ onUnmounted(() => {
 </script>
 <style scoped>
 .offline-banner {
-  background-color: #e74c3c;
-  color: white;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
   padding: 8px 16px;
-  font-size: 0.85rem;
-  position: fixed;
+  color: white;
+  background: #b91c1c;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 650;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 1000;
 }
+
 </style>

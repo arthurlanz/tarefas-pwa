@@ -1,7 +1,10 @@
 <template>
   <div class="login-container">
     <form class="login-form" @submit.prevent="handleLogin">
-      <h1>Entrar</h1>
+      <div class="login-heading">
+        <h1>Entrar</h1>
+        <p class="login-description">Acesse sua lista de atividades.</p>
+      </div>
 
       <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
 

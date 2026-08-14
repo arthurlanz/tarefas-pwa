@@ -1,7 +1,8 @@
 <template>
   <header class="app-header">
-    <h1>Meus gestor de Tarefas!!!!</h1>
-    <nav>
+    <h1>Registro de Atividades</h1>
+
+    <nav aria-label="Navegação principal">
       <router-link to="/">Início</router-link>
       <router-link to="/about">Sobre</router-link>
       <button v-if="authStore.isAuthenticated" class="logout-btn" @click="handleLogout">

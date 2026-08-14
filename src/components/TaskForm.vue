@@ -1,15 +1,18 @@
 <template>
   <form class="task-form" @submit.prevent="handleSubmit">
+    <h3 class="form-title">{{ editingTask ? "Editar tarefa" : "Nova tarefa" }}</h3>
+
     <div class="task-row">
       <input
+        id="task-title"
         v-model="newTask"
         type="text"
-        placeholder="Nova tarefa..."
+        placeholder="Digite uma tarefa"
         class="task-input"
       />
 
       <button type="submit" class="task-button" :disabled="uploading">
-        {{ editingTask ? "Alterar" : "Adicionar" }}
+        {{ editingTask ? "Salvar" : "Adicionar" }}
       </button>
 
       <button
@@ -31,14 +34,9 @@
       />
 
       <label class="image-label" :class="{ disabled: uploading }">
-        <span v-if="uploading" class="upload-status">Enviando...</span>
-
+        <span v-if="uploading">Enviando...</span>
         <span v-else>
-          {{
-            previewUrl || editingTask?.img_url
-              ? "Trocar imagem"
-              : "Adicionar imagem"
-          }}
+          {{ previewUrl || editingTask?.img_url ? "Trocar imagem" : "Adicionar imagem" }}
         </span>
 
         <input
@@ -51,10 +49,7 @@
         />
       </label>
 
-      <p class="image-help">
-        Em celular, o botão pode abrir a câmera.
-        Em notebook, abre o seletor de arquivos.
-      </p>
+      <span class="image-help">Arquivo JPEG ou PNG</span>
     </div>
   </form>
 </template>
@@ -155,46 +150,54 @@ function handleCancel() {
 
 <style scoped>
 .task-form {
-  margin-bottom: 24px;
-  padding: 14px;
-  background-color: #fffafb;
-  border: 1px solid #f0ccd6;
-  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 22px;
+  background: white;
+  border: 1px solid #d6d6d6;
+  border-radius: 7px;
+}
+
+.form-title {
+  margin: 0 0 12px;
+  font-size: 1rem;
 }
 
 .task-row {
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
 }
 
 .task-input {
   flex: 1;
-  padding: 12px;
-  border: 2px solid #f0ccd6;
-  border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.2s;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
+  font-size: 0.92rem;
 }
 
 .task-input:focus {
-  border-color: #d85c82;
+  outline: 2px solid rgba(37, 99, 235, 0.2);
+  border-color: #2563eb;
+}
+
+.task-button,
+.task-button-cancel {
+  padding: 10px 14px;
+  border-radius: 5px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .task-button {
-  padding: 12px 20px;
-  background-color: #da7799;
   color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  background: #2563eb;
+  border: 1px solid #2563eb;
 }
 
 .task-button:hover:not(:disabled) {
-  background-color: #b8476a;
+  background: #1d4ed8;
 }
 
 .task-button:disabled {
@@ -203,56 +206,36 @@ function handleCancel() {
 }
 
 .task-button-cancel {
-  padding: 12px 16px;
-  background-color: transparent;
-  color: #8b6672;
-  border: 2px solid #f0ccd6;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: border-color 0.2s;
-}
-
-.task-button-cancel:hover {
-  border-color: #dca4b5;
+  color: #555;
+  background: white;
+  border: 1px solid #bdbdbd;
 }
 
 .image-section {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  background: #fff3f6;
-  border-radius: 8px;
-  border: 1px dashed #e4aebf;
-  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e5e5e5;
 }
 
 .image-preview {
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid #f0ccd6;
-  flex-shrink: 0;
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
 }
 
 .image-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
+  padding: 7px 10px;
+  color: #2563eb;
   background: white;
-  border: 1.5px solid #d85c82;
-  color: #c24c72;
-  border-radius: 6px;
-  font-size: 0.875rem;
+  border: 1px solid #2563eb;
+  border-radius: 5px;
+  font-size: 0.8rem;
   cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.image-label:hover:not(.disabled) {
-  background: #ffeaf0;
 }
 
 .image-label.disabled {
@@ -265,13 +248,23 @@ function handleCancel() {
 }
 
 .image-help {
+  color: #777;
   font-size: 0.75rem;
-  color: #a88690;
-  margin: 0;
-  flex-basis: 100%;
 }
 
-.upload-status {
-  color: #8b6672;
+@media (max-width: 600px) {
+  .task-row {
+    flex-direction: column;
+  }
+
+  .task-button,
+  .task-button-cancel {
+    width: 100%;
+  }
+
+  .image-section {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
 }
 </style>

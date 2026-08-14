@@ -13,16 +13,14 @@
         :checked="task.done"
         @change="$emit('toggle', task.id)"
       />
-
       <span class="task-title">{{ task.title }}</span>
     </label>
 
     <div class="task-actions">
-      <button class="task-edit" @click="$emit('edit', task)">
+      <button type="button" class="task-edit" @click="$emit('edit', task)">
         Editar
       </button>
-
-      <button class="task-remove" @click="$emit('remove', task.id)">
+      <button type="button" class="task-remove" @click="$emit('remove', task.id)">
         Remover
       </button>
     </div>
@@ -43,85 +41,89 @@ defineEmits(["toggle", "remove", "edit"]);
 <style scoped>
 .task-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 12px;
-  background-color: white;
-  border: 1px solid #f2d5dd;
-  border-radius: 8px;
-  margin-bottom: 8px;
-  box-shadow: 0 1px 3px rgba(130, 61, 82, 0.08);
-  transition: opacity 0.2s;
   gap: 10px;
+  padding: 11px;
+  margin-bottom: 8px;
+  background: white;
+  border: 1px solid #d6d6d6;
+  border-radius: 6px;
 }
 
 .task-thumbnail {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid #f0ccd6;
-  flex-shrink: 0;
-}
-
-.task-item.done {
-  opacity: 0.6;
-  background-color: #fff8fa;
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
 }
 
 .task-label {
   display: flex;
   align-items: center;
-  gap: 12px;
-  cursor: pointer;
   flex: 1;
+  gap: 10px;
+  min-width: 0;
+  cursor: pointer;
 }
 
-.task-label input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  accent-color: #d85c82;
+.task-label input {
+  width: 18px;
+  height: 18px;
+  accent-color: #2563eb;
 }
 
 .task-title {
-  font-size: 1rem;
-  color: #573b44;
+  overflow-wrap: anywhere;
+  font-size: 0.92rem;
+}
+
+.task-item.done {
+  background: #f7f7f7;
+  opacity: 0.7;
 }
 
 .task-item.done .task-title {
+  color: #777;
   text-decoration: line-through;
-  color: #aa8791;
-}
-
-.task-remove {
-  background: none;
-  border: none;
-  color: #c33f60;
-  cursor: pointer;
-  font-size: 0.85rem;
-  padding: 4px 8px;
-}
-
-.task-remove:hover {
-  text-decoration: underline;
 }
 
 .task-actions {
   display: flex;
-  gap: 4px;
-  align-items: center;
+  gap: 5px;
+}
+
+.task-edit,
+.task-remove {
+  padding: 5px 7px;
+  background: transparent;
+  border: none;
+  font-size: 0.78rem;
+  cursor: pointer;
 }
 
 .task-edit {
-  background: none;
-  border: none;
-  color: #c65378;
-  cursor: pointer;
-  font-size: 0.85rem;
-  padding: 4px 8px;
+  color: #2563eb;
 }
 
-.task-edit:hover {
+.task-remove {
+  color: #b91c1c;
+}
+
+.task-edit:hover,
+.task-remove:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .task-item {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .task-actions {
+    width: 100%;
+    padding-left: 28px;
+  }
 }
 </style>

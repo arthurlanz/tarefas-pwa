@@ -45,18 +45,18 @@ async function installApp() {
 .install-button {
   display: block;
   width: 100%;
-  padding: 14px;
+  padding: 11px;
   margin-top: 20px;
-  background-color: #27ae60;
   color: white;
+  background: #2563eb;
   border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+  border-radius: 6px;
+  font-size: 0.86rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 .install-button:hover {
-  background-color: #219a52;
+  background: #1d4ed8;
 }
 </style>
